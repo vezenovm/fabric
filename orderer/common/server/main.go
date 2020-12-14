@@ -6,6 +6,8 @@ SPDX-License-Identifier: Apache-2.0
 
 package server
 
+//"github.com/hyperledger/fabric/orderer/consensus/random_bft"
+
 import (
 	"bytes"
 	"context"
@@ -813,7 +815,7 @@ func initializeMultichannelRegistrar(
 			consenters["etcdraft"] = etcdraft.New(clusterDialer, conf, srvConf, srv, registrar, nil, metricsProvider, bccsp)
 		}
 	}
-
+	//consenters["random_bft"] = random_bft.New()
 	consenters["solo"] = solo.New()
 	var kafkaMetrics *kafka.Metrics
 	consenters["kafka"], kafkaMetrics = kafka.New(conf.Kafka, metricsProvider, healthChecker, icr, registrar.CreateChain)
